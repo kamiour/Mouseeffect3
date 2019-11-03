@@ -1,5 +1,11 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+  margin: 0;
 }
 
 #one {
@@ -14,6 +20,7 @@ body {
   height: 5px;
   width: 5px;
   border-radius: 50%;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .btn {
