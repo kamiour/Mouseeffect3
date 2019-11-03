@@ -1,0 +1,13 @@
+#one {
+  height: 100vh;
+  width: 100vw;
+  background: black;
+}
+
+.move {
+  position: absolute;
+  transition-duration: 3s;
+  height: 5px;
+  width: 5px;
+  background: yellow;
+}
