@@ -1,5 +1,5 @@
-let number = 700;
-let radius = 50;
+let number = 600;
+let radius = 120;
 let initialLeft = [];
 let initialTop = [];
 
@@ -9,14 +9,14 @@ for (let i = 0; i < number; i++) {
 
 let elementsArr = $(".move");
 for (let i = 0; i < elementsArr.length; i++) {
-  /*elementsArr[i].style.transitionDuration = (4 * (Math.random() + 0.2))+'s';*/
-  elementsArr[i].style.transitionDuration = '0.4s';
+  let diameter = (20 * Math.random() + 8);
+
+  elementsArr[i].style.transitionDuration = '0.3s';
   elementsArr[i].style.left = (window.innerWidth * Math.random());
   elementsArr[i].style.top = (window.innerHeight * Math.random());
-  let diameter = (10 * Math.random() + 5);
   elementsArr[i].style.width = diameter;
   elementsArr[i].style.height = diameter;
-  elementsArr[i].style.backgroundColor = 'rgba('+Math.floor((Math.random() * 255) + 1)+','+Math.floor((Math.random() * 255) + 1)+','+Math.floor((Math.random() * 255) + 1)+', 1)';
+  elementsArr[i].style.backgroundColor = 'rgba(255, 255, 255, '+(0.3*Math.random() + 0.1)+'';
   initialLeft[i] = elementsArr[i].style.left;
   initialTop[i] = elementsArr[i].style.top;
 };
