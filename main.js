@@ -70,3 +70,12 @@ $('.btn').hover(function(event) {
   }
 
 });
+
+$('.btn').mouseout(function(event) {
+
+  for (let i = 0; i < elementsArr.length; i++) {
+    elementsArr[i].style.left = initialLeft[i];
+    elementsArr[i].style.top = initialTop[i];
+  }
+
+});
