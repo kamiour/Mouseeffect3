@@ -27,9 +27,11 @@ svg {
 
 .btn {
   position: absolute;
-  padding: 6px 25px;
+  text-align: center;
+  padding: 6px 0;
+  width: 160px;
   background-color: transparent;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 8px;
   color: white;
   text-decoration: none;
@@ -42,6 +44,11 @@ svg {
 }
 
 #btn2 {
-  top: 80px;
+  top: 66px;
+  left: 30px;
+}
+
+#btn3 {
+  top: 102px;
   left: 30px;
 }

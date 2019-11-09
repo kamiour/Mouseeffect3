@@ -2,6 +2,7 @@ let number = 200;
 let initialLeft = [];
 let initialTop = [];
 let points = [];
+let maxWidth = 300;
 
 for (let i = 0; i < number; i++) {
   $("#one").append( '<div id="move-'+i+'" class="move"></div>');
@@ -9,8 +10,8 @@ for (let i = 0; i < number; i++) {
 
 let elementsArr = $(".move");
 for (let i = 0; i < elementsArr.length; i++) {
-  let diameter = (3 * Math.random() + 2);
-  elementsArr[i].style.transitionDuration = '1.5s';
+  let diameter = 4;
+  elementsArr[i].style.transitionDuration = '1s';
   elementsArr[i].style.left = (window.innerWidth * Math.random());
   elementsArr[i].style.top = (window.innerHeight * Math.random());
   elementsArr[i].style.width = diameter;
@@ -20,23 +21,28 @@ for (let i = 0; i < elementsArr.length; i++) {
   initialTop[i] = elementsArr[i].style.top;
 };
 
-let length = $('path')[0].getTotalLength();
-for (let i = 0; i < elementsArr.length; i++) {
-  points[i] = $('path')[0].getPointAtLength(i*length/number);
-}
-
-$('#btn1').hover(function(event) {
-  for (let i = 0; i < elementsArr.length; i++) {
-    elementsArr[i].style.left = points[i].x*8 + window.innerWidth/2 - 150;
-    elementsArr[i].style.top = points[i].y*8 + window.innerHeight/2 - 200;
-  }
-  $('#btn1')[0].innerHTML = "Unhover me";
-});
-
-$('#btn1').mouseout(function(event) {
-  for (let i = 0; i < elementsArr.length; i++) {
-    elementsArr[i].style.left = initialLeft[i];
-    elementsArr[i].style.top = initialTop[i];
-  }
-  $('#btn1')[0].innerHTML = "Hover me";
-});
+for (let j = 1; j<4; j++) {
+  $('#btn'+j+'').hover(function() {
+    let length = $('path')[j-1].getTotalLength();
+    for (let i = 0; i < elementsArr.length; i++) {
+      points[i] = $('path')[j-1].getPointAtLength(i*length/number);
+    }
+  
+    let svgWidth = points.sort((a, b) => b.x - a.x )[0].x - points.sort((a, b) => a.x - b.x )[0].x;
+    let svgHeight = points.sort((a, b) => b.y - a.y )[0].y - points.sort((a, b) => a.y - b.y )[0].y;
+  
+    for (let i = 0; i < elementsArr.length; i++) {
+      elementsArr[i].style.left = maxWidth * points[i].x/svgWidth + window.innerWidth/2 - maxWidth/2;
+      elementsArr[i].style.top = (svgHeight/svgWidth) * maxWidth * points[i].y/svgHeight + window.innerHeight/2 - (maxWidth*(svgHeight/svgWidth))/2;
+    }
+    $('#btn'+j+'')[0].innerHTML = 'Unhover me #'+j+'';
+  });
+  
+  $('#btn'+j+'').mouseout(function() {
+    for (let i = 0; i < elementsArr.length; i++) {
+      elementsArr[i].style.left = initialLeft[i];
+      elementsArr[i].style.top = initialTop[i];
+    }
+    $('#btn'+j+'')[0].innerHTML = 'Hover me #'+j+'';
+  });
+};
