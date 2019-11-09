@@ -21,10 +21,12 @@ body {
   border-radius: 50%;
 }
 
+svg {
+  visibility: hidden;
+}
+
 .btn {
   position: absolute;
-  top: 30px;
-  left: 30px;
   padding: 6px 25px;
   background-color: transparent;
   border: 2px solid white;
@@ -32,4 +34,14 @@ body {
   color: white;
   text-decoration: none;
   z-index: 3;
+}
+
+#btn1 {
+  top: 30px;
+  left: 30px;
+}
+
+#btn2 {
+  top: 80px;
+  left: 30px;
 }
