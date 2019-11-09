@@ -30,6 +30,7 @@ $('#btn1').hover(function(event) {
     elementsArr[i].style.left = points[i].x*8 + window.innerWidth/2 - 150;
     elementsArr[i].style.top = points[i].y*8 + window.innerHeight/2 - 200;
   }
+  $('#btn1')[0].innerHTML = "Unhover me";
 });
 
 $('#btn1').mouseout(function(event) {
@@ -37,4 +38,5 @@ $('#btn1').mouseout(function(event) {
     elementsArr[i].style.left = initialLeft[i];
     elementsArr[i].style.top = initialTop[i];
   }
+  $('#btn1')[0].innerHTML = "Hover me";
 });
